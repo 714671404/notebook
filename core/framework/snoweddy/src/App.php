@@ -23,19 +23,13 @@ class App
      */
     public function run()
     {
-        $this->http();
         Route::init();
         $this->setReporting();
         $this->removeMagicQuotes();
         $this->unregisterGlobals();
-        $this->setDbConfig();
         $this->init();
     }
 
-    private function http()
-    {
-        header('Content-Type:test/html;charset=utf-8');
-    }
 
     /*
      * 检测开发环境
@@ -91,23 +85,11 @@ class App
         }
     }
 
-    // 配置数据库信息
-    public function setDbConfig()
-    {
-        if ($this->config['db']) {
-            define('DB_HOST', $this->config['db']['host']);
-            define('DB_NAME', $this->config['db']['dbname']);
-            define('DB_USER', $this->config['db']['username']);
-            define('DB_PASS', $this->config['db']['password']);
-        }
-    }
-
-
     /*
      * 初始化
      */
     public function init()
     {
-        // include_once __DIR__ . '/library/function.php';
+         include_once __DIR__ . '/library/function.php';
     }
 }

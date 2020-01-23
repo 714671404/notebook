@@ -5,10 +5,11 @@ return [
     'default_action' => 'index',
     'debug' => true,
     'db' => [
-        'host' => '127.1.1.1',
-        'username' => 'root',
-        'password' => 'yuefei12',
+        'connection' => 'mysql',
         'dbname' => 'snake',
-        'port' => 3306
+        'host' => '127.0.0.1',
+        'user' => 'root',
+        'pass' => 'yuefei12',
+        'port' => 3306,
     ]
 ];

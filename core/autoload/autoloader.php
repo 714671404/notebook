@@ -33,8 +33,10 @@ class Autoloader
             'snoweddy\\src\\base\\Controller' => APP_PATH . '/core/framework/snoweddy/src/base/Controller.php',
             'snoweddy\\src\\base\\Model' => APP_PATH . '/core/framework/snoweddy/src/base/Model.php',
             'snoweddy\\src\\base\\View' => APP_PATH . '/core/framework/snoweddy/src/base/View.php',
-            'snoweddy\\src\\db\\Sql' => APP_PATH . '/core/framework/snoweddy/src/base/Sql.php',
             'snoweddy\\src\\base\\Env' => APP_PATH . '/core/framework/snoweddy/src/base/Env.php',
+            'snoweddy\\src\\db\\Sql' => APP_PATH . '/core/framework/snoweddy/src/db/Sql.php',
+            'snoweddy\\src\\db\\DB' => APP_PATH . '/core/framework/snoweddy/src/db/DB.php',
+            'snoweddy\\src\\db\\DBDome' => APP_PATH . '/core/framework/snoweddy/src/db/DBDome.php',
             'snoweddy\\src\\route\\Route' => APP_PATH . '/core/framework/snoweddy/src/route/Route.php',
         ];
     }

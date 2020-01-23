@@ -49,7 +49,7 @@ body {
 }
 .nav>.nav-bar>li>a {
     display: inline-block;
-    font-size: 18px;
+    font-size: 12px;
 }
 .nav>.nav-bar>li>a:hover {
     color: #887575;
