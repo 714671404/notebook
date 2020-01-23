@@ -12,3 +12,10 @@ if (!function_exists('db')) {
         return snoweddy\src\db\DB::init();
     }
 }
+if (!function_exists('dd')) {
+    function dd($values)
+    {
+        var_dump($values);
+        exit;
+    }
+}

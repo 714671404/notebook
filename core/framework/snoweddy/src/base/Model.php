@@ -2,25 +2,26 @@
 
 namespace snoweddy\src\base;
 
-use snoweddy\src\db\Sql;
 
-class Model extends Sql
+use snoweddy\src\db\DB;
+
+class Model
 {
+    /*
+     * 初始化属性
+     */
     protected $model;
+    protected $table;
+    protected $primary = 'id';
+    protected $db;
+
 
     public function __construct()
     {
-        // 获取数据库表名
-        if (!$this->table) {
-
-            // 获取模型类名称
-            $this->model = get_class($this);
-
-            // 删除类名最后的 Model 字符
-            $this->model = substr($this->model, 0, -5);
-
-            // 数据库表名与类名一致
-            $this->table = strtolower($this->model);
+        if ($this->table) {
+            $this->model = substr(strrchr(get_class($this), '\\'), 1);
+            $this->table = strtolower($this->model) . 's';
         }
+        $this->db = DB::init();
     }
 }

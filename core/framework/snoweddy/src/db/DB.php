@@ -52,10 +52,6 @@ class DB
     public function query($sql)
     {
         $rule = $this->dbh->query($sql);
-        foreach ($rule as $var) {
-            print_r($var);
-            echo '<hr>';
-        }
     }
 
     /*

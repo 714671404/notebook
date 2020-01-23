@@ -29,11 +29,11 @@ class App
     public function http()
     {
         header("Content-type:text/html;charset=utf-8");
-        Route::init();
         $this->setReporting();
         $this->removeMagicQuotes();
         $this->unregisterGlobals();
         $this->init();
+        Route::init();
     }
 
 

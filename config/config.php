@@ -6,7 +6,7 @@ return [
     'debug' => true,
     'db' => [
         'connection' => 'mysql',
-        'dbname' => 'snake',
+        'dbname' => 'notebook',
         'host' => '127.0.0.1',
         'user' => 'root',
         'pass' => 'yuefei12',
