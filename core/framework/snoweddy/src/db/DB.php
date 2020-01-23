@@ -8,64 +8,54 @@ use PDOException;
 class DB
 {
     /*
-     * 初始化属性
+     * 初始化默认属性
      */
-    private static $_instance = null;
-    private $host;
-    private $user;
-    private $pass;
-    private $dbname;
-    private $charset;
-    private $port;
-    private $connection;
+    protected static $_instance = null;
+    protected $dbh;
+    protected $dsn;
 
-    /*
-     * 禁止实例
-     */
-    private function __construct() {
-        try {
-            $this->setInfo();
-            $dsn = sprintf(
-                '%s:host=%s;dbname=%s;charset=utf8;port=%s',
-                $this->connection,
-                $this->host,
-                $this->dbname,
-                $this->port
-            );
-            $option = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];
-            return new PDO($dsn, $this->user, $this->pass, $option);
-        } catch (PDOException $e) {
-            exit("错误信息：" . $e->getMessage());
-        }
+    private function __construct()
+    {
+        $dbConfig = config('config.db');
+        $this->dsn = sprintf(
+            '%s:host=%s;dbname=%s;charset=utf8;',
+            $dbConfig['connection'],
+            $dbConfig['host'],
+            $dbConfig['dbname'],
+        );
+        $options = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];
+        return $this->dbh = new PDO($this->dsn, $dbConfig['user'], $dbConfig['pass'], $options);
     }
 
     /*
-     * 实例入口
+     * 单例入口
      */
     public static function init()
     {
-        /*
-         * 单例实例化
-         */
-        if (null !== self::$_instance) {
-            return self::$_instance;
+        if (self::$_instance === null) {
+            self::$_instance = new self();
         }
-
-        return self::$_instance = new self();
+        return self::$_instance;
     }
 
     /*
-     * 加载数据库信息
+     * 执行一条sql返回影响函数
      */
-    private function setInfo()
+    public function exec($sql)
     {
-        $dbConfig = config('config.db');
-        $this->host = $dbConfig['host'];
-        $this->user = $dbConfig['user'];
-        $this->pass = $dbConfig['pass'];
-        $this->dbname = $dbConfig['dbname'];
-        $this->port = $dbConfig['port'];
-        $this->connection = $dbConfig['connection'];
+        return $this->dbh->exec($sql);
+    }
+
+    /*
+     * 执行一条sql返回结果集
+     */
+    public function query($sql)
+    {
+        $rule = $this->dbh->query($sql);
+        foreach ($rule as $var) {
+            print_r($var);
+            echo '<hr>';
+        }
     }
 
     /*

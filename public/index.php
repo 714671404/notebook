@@ -9,3 +9,5 @@ require APP_PATH . '/core/autoload.php';
 
 // 加载配置文件并且初始化
 (new snoweddy\src\App())->run();
+
+(db())->query('select * from `item` where 1');
