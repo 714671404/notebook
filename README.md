@@ -1,14 +1,8 @@
-"# snake" 
-# snake
+## v0.0.0
 
-CREATE DATABASE `project` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `project`;
+## 目录结构
 
-CREATE TABLE `item` (
-    `id` int(11) NOT NULL auto_increment,
-    `item_name` varchar(255) NOT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
- 
-INSERT INTO `item` VALUES(1, 'Hello World.');
-INSERT INTO `item` VALUES(2, 'Lets go!');
+~~~
+Code web部署目录（或者子目录）
+|- app              应用目录
+|   |-  http        http
