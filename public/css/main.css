@@ -1,0 +1,67 @@
+body, div, header, footer, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+ul, ol {list-style: none;}
+a {text-decoration: none; color: inherit}
+html {
+    box-sizing: border-box;
+}
+body {
+    height: 100%;
+    background: #f0f2f5;
+    color: #333;
+    font-size: 12px;
+    font-family: 微软雅黑,Helvetica,Arial,PingFang SC,Noto Sans,Roboto,Microsoft Yahei,sans-serif;
+    font-weight: inherit;
+    box-sizing: border-box;
+
+}
+.layout {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+#header {
+    margin-bottom: 15px;
+    background: #fff;
+    box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
+    -webkit-box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
+    border-top: 3px solid #2185d0;
+}
+.nav {
+    min-width: 1000px;
+    height: 50px;
+    padding: 0 20px;
+    justify-content: space-between;
+}
+.nav>.logo {
+    flex-grow: 5;
+    font-size: 24px;
+    color: #3398ff;
+    letter-spacing: 1.3rem;
+}
+.nav>.nav-bar {
+    flex-grow: 0;
+}
+.nav>.nav-bar>li {
+    margin: 0 8px;
+}
+.nav>.nav-bar>li>a {
+    display: inline-block;
+    font-size: 18px;
+}
+.nav>.nav-bar>li>a:hover {
+    color: #887575;
+}
+
+
+/*
+    出事默认属性
+ */
+.left, .right {
+    height: 100px;
+    background: aliceblue;
+    border-bottom: 1px solid cadetblue;
+}
+
