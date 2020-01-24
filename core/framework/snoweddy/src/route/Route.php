@@ -16,7 +16,11 @@ class Route
      */
     public static function get($rule, $route)
     {
-        self::$route[$rule] = $route;
+        if ((strpos($rule, '{') === false) && (strpos($rule, '}') === false)) {
+            self::$route['y'][$rule] = $route;
+        } else {
+            self::$route['n'][$rule] = $route;
+        }
     }
 
     /*
@@ -24,40 +28,55 @@ class Route
      */
     public static function rule()
     {
+        /*
+         * 静态属性$route是一个二维数组，
+         * 键值'y'存放没有参数的路由，
+         * 键值'n'存放有参数的路由
+         */
         $data = [];
-        $url = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
-        $url_count = count($url);
-        foreach (self::$route as $key => $var) {
-            $rule = explode('/', trim($key, '/'));
+        $route = '';
+        $controller = '';
+        $url = trim($_SERVER['REQUEST_URI'], '/');
+        $url = $url ? $url : '/';
 
-            $rule_count = count($rule);
-            if ($rule_count !== $url_count) {
-                continue;
-            }
-
-            foreach ($rule as $k => $v) {
-                if ($v === $url[$k]) {
-                    $rule_count --;
-                    continue;
-                } else if (preg_match('/^\{\w+\}/i', $v)) {
-                    $data[] = $url[$k];
-                    $rule_count --;
+        if (array_key_exists($url, self::$route['y'])) {
+            $route = self::$route['y'][$url];
+        } else {
+            $url = explode('/', $url);
+            $url_count = count($url);
+            foreach (self::$route['n'] as $key => $var) {
+                $rule = explode('/', trim($key, '/'));
+                $rule_count = count($rule);
+                if ($rule_count !== $url_count) {
                     continue;
                 }
-            }
-            if ($rule_count === 0) {
-                if (is_string($var)) {
-                    $str = 'app\\http\\controllers\\';
-                    $v_arr = explode('@', $var);
-                    $str .= array_shift($v_arr);
-                    $str = str_replace('/', DIRECTORY_SEPARATOR, $str);
-                    $controller = new $str();
-                    call_user_func_array([$controller, $v_arr[0]], $data);
-                    break;
-                } else if (is_object($var)) {
-                    print_r($var());
+                foreach ($rule as $k => $v) {
+                    if ($v === $url[$k]) {
+                        $rule_count --;
+                        continue;
+                    } else if (preg_match('/^\{\w+\}/i', $v)) {
+                        $data[] = $url[$k];
+                        $rule_count --;
+                        continue;
+                    }
+                }
+                if ($rule_count === 0) {
+                    $route = $var;
                 }
             }
         }
+        if (is_string($route)) {
+            $route = explode('@', $route);
+        } elseif (is_object($route)) {
+            $route();
+        }
+        $controller = 'app\\http\\controllers\\' . array_shift($route);
+        $dispatch = new $controller();
+        call_user_func_array([$dispatch, $route[0]], $data);
+    }
+
+    private function instantiate($class)
+    {
+
     }
 }
