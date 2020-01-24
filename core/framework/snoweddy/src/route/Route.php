@@ -68,11 +68,23 @@ class Route
         if (is_string($route)) {
             $route = explode('@', $route);
         } elseif (is_object($route)) {
-            $route();
+            return print_r(call_user_func_array($route, $data));
         }
         $controller = 'app\\http\\controllers\\' . array_shift($route);
         $dispatch = new $controller();
-        call_user_func_array([$dispatch, $route[0]], $data);
+        return call_user_func_array([$dispatch, $route[0]], $data);
+    }
+
+    public static function __callStatic($method, $params)
+    {
+        /*
+         * 使用 $_SERVER['REQUEST_METHOD']与__callStatic魔术方法
+         * 实现get与post方法，与request方法获取参数
+         */
+        echo $_SERVER['REQUEST_METHOD'] . '<hr>';
+        echo $method;
+        echo '<hr>';
+        dd($params);
     }
 
     private function instantiate($class)
