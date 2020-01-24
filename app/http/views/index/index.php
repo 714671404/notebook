@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="app">
-        <?php  include __DIR__ . '/../layouts/header.php'?>
+        <?php include __DIR__ . '/../layouts/header.php' ?>
 
         <div class="left">https://juejin.im/post/599970f4518825243a78b9d5</div>
         <div class="right">123123</div>

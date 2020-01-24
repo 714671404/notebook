@@ -4,9 +4,19 @@ namespace snoweddy\src\route;
 
 class Route
 {
+    private static $route = [];
     public static function init()
     {
+        include APP_PATH . '/route/web.php';
         self::rule();
+    }
+
+    /*
+     * get方法
+     */
+    public static function get($rule, $route)
+    {
+        self::$route[$rule] = $route;
     }
 
     /*
@@ -14,33 +24,40 @@ class Route
      */
     public static function rule()
     {
-        $controllerName = 'Index';
-        $actionName = 'index';
-        $param = [];
-        $url = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['REQUEST_URI']);
+        $data = [];
+        $url = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
+        $url_count = count($url);
+        foreach (self::$route as $key => $var) {
+            $rule = explode('/', trim($key, '/'));
 
-        $position = strpos($url, '?');
+            $rule_count = count($rule);
+            if ($rule_count !== $url_count) {
+                continue;
+            }
 
-        $url = $position === false ? $url : substr($url, 0, $position);
-
-        $url = trim($url, '/');
-
-        if ($url) {
-            $urlArray = array_filter(explode('/', $url));
-            // Route::get('index', 'Home\Index@index')
-            $controllerName = array_shift($urlArray);
-            $actionName = array_shift($urlArray);
-            $param = $urlArray;
-        }
-
-        $controllerName = 'app\\http\\controllers\\' . ucfirst($controllerName) . 'Controller';
-
-        $dispatch = new $controllerName();
-
-        $result = call_user_func_array([$dispatch, $actionName], $param);
-
-        if ($result !== false) {
-            print_r($result);
+            foreach ($rule as $k => $v) {
+                if ($v === $url[$k]) {
+                    $rule_count --;
+                    continue;
+                } else if (preg_match('/^\{\w+\}/i', $v)) {
+                    $data[] = $url[$k];
+                    $rule_count --;
+                    continue;
+                }
+            }
+            if ($rule_count === 0) {
+                if (is_string($var)) {
+                    $str = 'app\\http\\controllers\\';
+                    $v_arr = explode('@', $var);
+                    $str .= array_shift($v_arr);
+                    $str = str_replace('/', DIRECTORY_SEPARATOR, $str);
+                    $controller = new $str();
+                    call_user_func_array([$controller, $v_arr[0]], $data);
+                    break;
+                } else if (is_object($var)) {
+                    print_r($var());
+                }
+            }
         }
     }
 }

@@ -16,10 +16,6 @@ class User extends Model
      */
     public function add_user(array $array)
     {
-        dd([
-            $this->table,
-            $this->model
-        ]);
         $sql = sprintf(
             "insert into `%s` (name, username, password, email, phone) values ('%s', '%s', '%s', '%s', '%s')",
             $this->table,
