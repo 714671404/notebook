@@ -1,6 +1,6 @@
 <?php
 
-use snoweddy\src\route\Route;
+namespace snoweddy\src\route;
 
 Route::get('/', 'IndexController@index');
 Route::get('site/{id}/show/{name}', 'SiteController@show');
@@ -13,3 +13,4 @@ Route::get('register', 'auth\RegisterController@register');
 Route::post('test', function () {
     return 1;
 });
+Route::post('abc', 'auth\RegisterController@register');

@@ -15,7 +15,9 @@ if (!function_exists('db')) {
 if (!function_exists('dd')) {
     function dd($values)
     {
-        var_dump($values);
+        echo '<pre>';
+        print_r($values);
+        echo '</pre>';
         exit;
     }
 }

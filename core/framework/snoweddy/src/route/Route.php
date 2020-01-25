@@ -5,90 +5,124 @@ namespace snoweddy\src\route;
 class Route
 {
     private static $route = [];
+    private static $method;
     public static function init()
     {
-        include APP_PATH . '/route/web.php';
-        self::rule();
+        include APP_PATH . '/routes/web.php';
+        self::route();
     }
 
     /*
-     * get方法
+     * 判断是get还是post请求
      */
-    public static function get($rule, $route)
+    private static function route()
     {
-        if ((strpos($rule, '{') === false) && (strpos($rule, '}') === false)) {
-            self::$route['y'][$rule] = $route;
-        } else {
-            self::$route['n'][$rule] = $route;
-        }
+        self::rule(strtolower($_SERVER['REQUEST_METHOD']));
     }
 
     /*
      * 路由核心代码
      */
-    public static function rule()
+    private static function rule($method)
     {
-        /*
-         * 静态属性$route是一个二维数组，
-         * 键值'y'存放没有参数的路由，
-         * 键值'n'存放有参数的路由
-         */
-        $data = [];
-        $route = '';
-        $controller = '';
         $url = trim($_SERVER['REQUEST_URI'], '/');
         $url = $url ? $url : '/';
-
-        if (array_key_exists($url, self::$route['y'])) {
-            $route = self::$route['y'][$url];
-        } else {
-            $url = explode('/', $url);
-            $url_count = count($url);
-            foreach (self::$route['n'] as $key => $var) {
-                $rule = explode('/', trim($key, '/'));
-                $rule_count = count($rule);
-                if ($rule_count !== $url_count) {
-                    continue;
-                }
-                foreach ($rule as $k => $v) {
-                    if ($v === $url[$k]) {
-                        $rule_count --;
-                        continue;
-                    } else if (preg_match('/^\{\w+\}/i', $v)) {
-                        $data[] = $url[$k];
-                        $rule_count --;
-                        continue;
-                    }
-                }
-                if ($rule_count === 0) {
-                    $route = $var;
+        $controller = '';
+        $action = '';
+        $params = [];
+        $dispatch = null;
+        $route = null;
+        if ($method === 'get') {
+            $getArray = self::$route['get'];
+            if (array_key_exists($url, $getArray['no_params'])) {
+                $route = $getArray['no_params'][$url];
+            } else {
+                $result = self::parsing($url, $getArray['have_params']);
+                if (is_array($result)) {
+                    $route = $result['route'];
+                    $params = $result['params'];
+                } elseif (is_string($result)) {
+                    $route = $result;
                 }
             }
+
+        } elseif ($method === 'post') {
+            $postArray = self::$route['post'];
+            $route = self::parsing($url, $postArray);
         }
+
         if (is_string($route)) {
             $route = explode('@', $route);
         } elseif (is_object($route)) {
-            return print_r(call_user_func_array($route, $data));
+            return print_r(call_user_func_array($route, $params));
         }
         $controller = 'app\\http\\controllers\\' . array_shift($route);
         $dispatch = new $controller();
-        return call_user_func_array([$dispatch, $route[0]], $data);
+        return print_r(call_user_func_array([$dispatch, $route[0]], $params));
+    }
+
+    /*
+     * 处理uri
+     */
+    private static function parsing($route, $data)
+    {
+        /*
+         * 1）$url 拆分url
+         * 2）便利have_params找到与url相似的键值对
+         */
+        $route = explode('/', $route);
+        $params = [];
+        $routeLength = count($route);
+        foreach ($data as $key => $var) {
+            $key = trim($key, '/');
+            if ($key) {
+                $rule = explode('/', $key);
+                $ruleLength = count($rule);
+                if ($routeLength !== $ruleLength) {
+                    continue;
+                }
+                foreach ($rule as $k => $v) {
+                    if ($v === $route[$k]) {
+                        $ruleLength --;
+                        continue;
+                    } else if (preg_match('/^\{\w+\}/i', $v)) {
+                        $params[] = $route[$k];
+                        $ruleLength --;
+                        continue;
+                    }
+                }
+                if ($ruleLength === 0) {
+                    $route = $var;
+                    break;
+                }
+            }
+        }
+        if (empty($params)) {
+            return $route;
+        }
+        return [
+            'route' => $route,
+            'params' => $params
+        ];
     }
 
     public static function __callStatic($method, $params)
     {
         /*
-         * 使用 $_SERVER['REQUEST_METHOD']与__callStatic魔术方法
-         * 实现get与post方法，与request方法获取参数
+         * 判断是get请求或者post请求
          */
-        echo $_SERVER['REQUEST_METHOD'] . '<hr>';
-        echo $method;
-        echo '<hr>';
-        dd($params);
-    }
+        $rule = $params[0];
+        $route = $params[1];
+        if ($method === 'get') {
+            if ((strpos($rule, '{') === false) && (strpos($rule, '}') === false)) {
+                self::$route[$method]['no_params'][$rule] = $route;
+            } else {
+                self::$route[$method]['have_params'][$rule] = $route;;
+            }
+        } elseif ($method === 'post') {
+            self::$route[$method][$rule] = $route;
+        }
 
-    private function instantiate($class)
-    {
 
     }
 }

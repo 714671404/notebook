@@ -11,7 +11,7 @@ class View
     /*
      * 分配变量并且引入视图
      */
-    public function render($path, array $data = [])
+    public function view($path, array $data = [])
     {
         extract($data);
 

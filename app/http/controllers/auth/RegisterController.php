@@ -8,6 +8,6 @@ class RegisterController extends Controller
 {
     public function register()
     {
-        dd($_POST);
+        return 'register';
     }
 }

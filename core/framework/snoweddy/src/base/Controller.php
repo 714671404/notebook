@@ -19,9 +19,9 @@ class Controller
     /*
      * 引用view的方法
      */
-    protected function render($path, array $data = [])
+    protected function view($path, array $data = [])
     {
-        $this->_view->render($path, $data);
+        $this->_view->view($path, $data);
     }
 
 
