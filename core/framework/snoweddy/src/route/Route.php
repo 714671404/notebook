@@ -148,19 +148,24 @@ class Route
 
     public static function __callStatic($method, $params)
     {
-        /*
-         * 判断是get请求或者post请求
-         */
+        // 清除路由多余字符
         $rule = trim($params[0], '/');
         $rule = $rule ? $rule : '/';
         $route = $params[1];
+
+        // 判断是get请求或者post请求
         if ($method === 'get') {
+
+            // 按照要处理数组
             if ((strpos($rule, '{') === false) && (strpos($rule, '}') === false)) {
+                // 没有参数的路由
                 self::$route[$method]['no_params'][$rule] = $route;
             } else {
+                // 有参数的路由
                 self::$route[$method]['have_params'][$rule] = $route;;
             }
         } elseif ($method === 'post') {
+            // post都是没有参数路由
             self::$route[$method][$rule] = $route;
         }
 
