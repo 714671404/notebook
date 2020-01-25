@@ -104,32 +104,42 @@ class Route
         // 便利所有路由比对
         foreach ($data as $key => $var) {
 
-            // 出去路由前后多余字符
+            // 除去路由前后多余字符
             $key = trim($key, '/');
 
+            // 拆分路由
             $rule = explode('/', $key);
+            // 获取路由长度
             $ruleLength = count($rule);
+            // 对比若不相等直接停止当前循环
             if ($routeLength !== $ruleLength) {
                 continue;
             }
+
+            // 遍历路由
             foreach ($rule as $k => $v) {
+
+                // 若数组与url当前位相同路由长度减一终止当前一次循环
                 if ($v === $route[$k]) {
                     $ruleLength --;
                     continue;
+
+                    // 正则匹配若当前路由值符合参数要求路由长度减一终止当前一次循环，并且将参数放到$params数组当中
                 } else if (preg_match('/^\{\w+\}/i', $v)) {
                     $params[] = $route[$k];
                     $ruleLength --;
                     continue;
                 }
             }
+
+            // 路由长度等于0代表匹配到对应路由终止循环
             if ($ruleLength === 0) {
                 $route = $var;
                 break;
             }
         }
-        if (empty($params)) {
-            return $route;
-        }
+
+        // 返回路由与参数
         return [
             'route' => $route,
             'params' => $params
