@@ -4,7 +4,7 @@ namespace snoweddy\src\route;
 
 Route::get('/', 'IndexController@index');
 Route::get('site/{id}/show/{name}', 'SiteController@show');
-Route::get('abc', function () {
+Route::get('/abc', function () {
     return $_SERVER['REQUEST_METHOD'];
 });
 
