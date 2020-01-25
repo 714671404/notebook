@@ -17,11 +17,21 @@ body {
     box-sizing: border-box;
 
 }
+/*
+    公共部分定义区域
+ */
 .layout {
     display: flex;
     display: -webkit-flex;
     align-items: center;
 }
+/*
+    公共部分定义结束
+ */
+
+/*
+    头部部分定义
+ */
 #header {
     margin-bottom: 15px;
     background: #fff;
@@ -54,14 +64,45 @@ body {
 .nav>.nav-bar>li>a:hover {
     color: #887575;
 }
+/*
+    头部部分结束
+ */
+
+/*
+    内容部分区域
+ */
+
+.left {
+    background: aliceblue;
+    border-bottom: 1px solid cadetblue;
+    height: 1000px;
+}
+
+/*
+    内容部分结束
+ */
+
 
 
 /*
-    出事默认属性
+    底部区域
  */
-.left, .right {
-    height: 100px;
-    background: aliceblue;
-    border-bottom: 1px solid cadetblue;
+
+#footer {
+
 }
+.footer-inner {
+    padding: 10px 0;
+    text-align: center;
+}
+/*
+    底部区域结束
+ */
+
+
+
+/*
+    默认属性
+ */
+
 
