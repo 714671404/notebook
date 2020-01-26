@@ -1,12 +1,13 @@
-body, div, header, footer, ul, ol {
+html {
+    box-sizing: border-box;
+}
+body, div, header, footer, ul, ol, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
 }
 ul, ol {list-style: none;}
 a {text-decoration: none; color: inherit}
-html {
-    box-sizing: border-box;
-}
+input {outline: none;}
 body {
     height: 100%;
     background: #f0f2f5;
@@ -23,7 +24,6 @@ body {
 .layout {
     display: flex;
     display: -webkit-flex;
-    align-items: center;
 }
 /*
     公共部分定义结束
@@ -33,57 +33,167 @@ body {
     头部部分定义
  */
 #header {
-    margin-bottom: 15px;
     background: #fff;
     box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
     -webkit-box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
     border-top: 3px solid #2185d0;
 }
-.nav {
-    min-width: 1000px;
+#header>.nav {
+    width: 1200px;
     height: 50px;
     padding: 0 20px;
-    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
 }
 .nav>.logo {
-    flex-grow: 5;
+    flex-grow: 0;
     font-size: 24px;
     color: #3398ff;
     letter-spacing: 1.3rem;
+    margin-right: 15px;
 }
 .nav>.nav-bar {
     flex-grow: 0;
+    margin-left: 10px;
 }
 .nav>.nav-bar>li {
     margin: 0 8px;
 }
 .nav>.nav-bar>li>a {
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
 }
 .nav>.nav-bar>li>a:hover {
     color: #887575;
 }
-/*
-    头部部分结束
- */
+.search-bar {
+    margin-left: 15px;
+}
+.search-bar-box {
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: 15px;
+    padding: 3px;
+}
+.search-bar-box>input {
+    padding: 5px 10px 5px 10px;
+    border: none;
+}
+.icon {
+    position: relative;
+    color: #888;
+    font-size: 12px;
+}
+.icon::before {
+    position: absolute;
+    content: " ";
+    background-image: url("/images/icon/search.gif");
+    background-size: 100%;
+    width: 16px;
+    height: 16px;
+    display: block;
+    top: 0;
+    right: 4px;
+    cursor: pointer;
+}
 
+.auth-menu {
+    flex-grow: 1;
+    text-align: right;
+}
+.auth-menu>a {
+    font-size: 14px;
+    color: #777;
+}
+.auth-menu>a+a {
+    margin-left: 13px;
+}
+.auth-menu>a:hover {
+    color: #0081f9;
+}
 /*
     内容部分区域
  */
-
-.left {
-    background: aliceblue;
-    border-bottom: 1px solid cadetblue;
-    height: 1000px;
+.main {
+    width: 1200px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    display: -webkit-flex;
+}
+.main-left {
+    width: 75%;
+}
+.main-right {
+    width: 25%;
+}
+.main-left, .main-right {
+    padding: .5rem;
+}
+.container {
+    background: #fff;
+    border: 1px solid #e3eaef;
+    box-shadow: 0 1px 2px 0 rgba(101,129,156,.08);
+    -webkit-box-shadow: 0 1px 2px 0 rgba(101,129,156,.08);
+    border-radius: 4px;
+}
+.topic-nav {
+    padding: 15px 22px;
+}
+.topic-like {
+    font-size: 13px;
+}
+.topic-like>a {
+    padding: .38571429em .52857143em;
+}
+.topic-like>.active {
+    background: rgba(0,0,0,.05);
+}
+.topic-like>a:hover {
+    background: rgba(0,0,0,.05);
 }
 
-/*
-    内容部分结束
- */
-
-
-
+.line {
+    border-bottom: 1px solid rgb(219, 224, 226);
+    margin-top: 13px;
+    margin-bottom: 0;
+}
+.topic-list {
+    box-sizing: inherit;
+}
+.topic-item {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    border-bottom: 1px solid #f2f2f2;
+    padding: .55rem 0;
+}
+.avatar-img>img {
+    width: 40px;
+    height: 40px;
+    border-radius: inherit;
+    border: none;
+}
+.topic-item-title {
+    flex-grow: 1;
+    margin-left: 10px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+}
+.introduction {
+    border-top: 2px solid #6E9CC3;
+    border-radius: 3px;
+}
+.introduction>h3 {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #777;
+}
+.introduction-text {
+    border-top: 1px solid rgba(34,36,38,.1);
+    padding:15px;
+}
 /*
     底部区域
  */
