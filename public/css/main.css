@@ -1,9 +1,9 @@
-body, div, header, footer, ul, ol {
+body, div, header, footer, ul, ol, h1 {
     margin: 0;
     padding: 0;
 }
 ul, ol {list-style: none;}
-a {text-decoration: none; color: inherit}
+a {text-decoration: none; color: inherit; font-size: inherit;}
 html {
     box-sizing: border-box;
 }
@@ -17,33 +17,27 @@ body {
     box-sizing: border-box;
 
 }
-/*
-    公共部分定义区域
- */
-.layout {
-    display: flex;
-    display: -webkit-flex;
-    align-items: center;
-}
-/*
-    公共部分定义结束
- */
 
 /*
     头部部分定义
  */
 #header {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     background: #fff;
     box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
     -webkit-box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
     border-top: 3px solid #2185d0;
 }
-.nav {
+.layout {
+    display: flex;
+    display: -webkit-flex;
+}
+#header>.nav {
     min-width: 1000px;
     height: 50px;
     padding: 0 20px;
     justify-content: space-between;
+    align-items: center;
 }
 .nav>.logo {
     flex-grow: 5;
@@ -64,26 +58,51 @@ body {
 .nav>.nav-bar>li>a:hover {
     color: #887575;
 }
-/*
-    头部部分结束
- */
 
 /*
     内容部分区域
  */
 
-.left {
-    background: aliceblue;
-    border-bottom: 1px solid cadetblue;
-    height: 1000px;
+.main {
+    width: 1000px;
+    margin: 0 auto;
 }
-
-/*
-    内容部分结束
- */
-
-
-
+.content {
+    flex-wrap: wrap;
+}
+.list-main {
+    flex-grow: 6;
+    margin-right: 10px;
+}
+.content-box {
+    padding: 15px 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
+    -webkit-box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
+}
+.content-item-title {
+    font-size: 16px;
+    padding: 10px 0;
+    flex-grow: 1;
+}
+.content-item-rich {
+    flex-grow: 0;
+}
+.content-item-other {
+    padding: 10px 0;
+}
+.content-item-title:hover {
+    color: #3398ff;
+    cursor: pointer;
+}
+.content-item-main:hover {
+    color: #646464;
+}
+.sib-main {
+    width: 30%;
+    flex-grow: 1;
+}
 /*
     底部区域
  */
@@ -92,14 +111,11 @@ body {
 
 }
 .footer-inner {
+    width: 1000px;
+    margin: 0 auto;
     padding: 10px 0;
     text-align: center;
 }
-/*
-    底部区域结束
- */
-
-
 
 /*
     默认属性
