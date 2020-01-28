@@ -10,4 +10,9 @@ class ArticleController extends Controller
     {
         return $this->view('article/article_create');
     }
+
+    public function store()
+    {
+        dd($_POST);
+    }
 }

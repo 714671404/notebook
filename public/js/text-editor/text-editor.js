@@ -1,0 +1,1 @@
+console.log($.get_id('text-editor-main-body'));
