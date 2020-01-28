@@ -7,9 +7,9 @@ class Controller
     /*
      * 属性初始化
      */
-    protected $_controller;
-    protected $_action;
-    protected $_view;
+    private $_controller;
+    private $_action;
+    private $_view;
 
     public function __construct()
     {

@@ -1,12 +1,13 @@
-body, div, header, footer, ul, ol, h1 {
+html {
+    box-sizing: border-box;
+}
+body, div, header, footer, ul, ol, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
 }
 ul, ol {list-style: none;}
-a {text-decoration: none; color: inherit; font-size: inherit;}
-html {
-    box-sizing: border-box;
-}
+a {text-decoration: none; color: inherit}
+input {outline: none;}
 body {
     height: 100%;
     background: #f0f2f5;
@@ -17,91 +18,181 @@ body {
     box-sizing: border-box;
 
 }
+/*
+    公共部分定义区域
+ */
+.layout {
+    display: flex;
+    display: -webkit-flex;
+}
+/*
+    公共部分定义结束
+ */
 
 /*
     头部部分定义
  */
 #header {
-    margin-bottom: 10px;
     background: #fff;
     box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
     -webkit-box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
     border-top: 3px solid #2185d0;
 }
-.layout {
-    display: flex;
-    display: -webkit-flex;
-}
 #header>.nav {
-    min-width: 1000px;
+    width: 1200px;
     height: 50px;
     padding: 0 20px;
-    justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
 }
 .nav>.logo {
-    flex-grow: 5;
+    flex-grow: 0;
     font-size: 24px;
     color: #3398ff;
     letter-spacing: 1.3rem;
+    margin-right: 15px;
 }
 .nav>.nav-bar {
     flex-grow: 0;
+    margin-left: 10px;
 }
 .nav>.nav-bar>li {
     margin: 0 8px;
 }
 .nav>.nav-bar>li>a {
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
 }
 .nav>.nav-bar>li>a:hover {
     color: #887575;
 }
+.search-bar {
+    margin-left: 15px;
+}
+.search-bar-box {
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: 15px;
+    padding: 3px;
+}
+.search-bar-box>input {
+    padding: 5px 10px 5px 10px;
+    border: none;
+}
+.icon {
+    position: relative;
+    color: #888;
+    font-size: 12px;
+}
+.icon::before {
+    position: absolute;
+    content: " ";
+    background-image: url("/images/icon/search.gif");
+    background-size: 100%;
+    width: 16px;
+    height: 16px;
+    display: block;
+    top: 0;
+    right: 4px;
+    cursor: pointer;
+}
 
+.auth-menu {
+    flex-grow: 1;
+    text-align: right;
+}
+.auth-menu>a {
+    font-size: 14px;
+    color: #777;
+}
+.auth-menu>a+a {
+    margin-left: 13px;
+}
+.auth-menu>a:hover {
+    color: #0081f9;
+}
 /*
     内容部分区域
  */
-
 .main {
-    width: 1000px;
-    margin: 0 auto;
+    width: 1200px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    display: -webkit-flex;
 }
-.content {
-    flex-wrap: wrap;
+.main-left {
+    width: 75%;
 }
-.list-main {
-    flex-grow: 6;
-    margin-right: 10px;
+.main-right {
+    width: 25%;
 }
-.content-box {
-    padding: 15px 20px;
+.main-left, .main-right {
+    padding: .5rem;
+}
+.container {
     background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
-    -webkit-box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
+    border: 1px solid #e3eaef;
+    box-shadow: 0 1px 2px 0 rgba(101,129,156,.08);
+    -webkit-box-shadow: 0 1px 2px 0 rgba(101,129,156,.08);
+    border-radius: 4px;
 }
-.content-item-title {
-    font-size: 16px;
-    padding: 10px 0;
+.topic-nav {
+    padding: 15px 22px;
+}
+.topic-like {
+    font-size: 13px;
+}
+.topic-like>a {
+    padding: .38571429em .52857143em;
+}
+.topic-like>.active {
+    background: rgba(0,0,0,.05);
+}
+.topic-like>a:hover {
+    background: rgba(0,0,0,.05);
+}
+
+.line {
+    border-bottom: 1px solid rgb(219, 224, 226);
+    margin-top: 13px;
+    margin-bottom: 0;
+}
+.topic-list {
+    box-sizing: inherit;
+}
+.topic-item {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    border-bottom: 1px solid #f2f2f2;
+    padding: .55rem 0;
+}
+.avatar-img>img {
+    width: 40px;
+    height: 40px;
+    border-radius: inherit;
+    border: none;
+}
+.topic-item-title {
     flex-grow: 1;
+    margin-left: 10px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
 }
-.content-item-rich {
-    flex-grow: 0;
+.introduction {
+    border-top: 2px solid #6E9CC3;
+    border-radius: 3px;
 }
-.content-item-other {
-    padding: 10px 0;
+.introduction>h3 {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #777;
 }
-.content-item-title:hover {
-    color: #3398ff;
-    cursor: pointer;
-}
-.content-item-main:hover {
-    color: #646464;
-}
-.sib-main {
-    width: 30%;
-    flex-grow: 1;
+.introduction-text {
+    border-top: 1px solid rgba(34,36,38,.1);
+    padding:15px;
 }
 /*
     底部区域
@@ -111,14 +202,6 @@ body {
 
 }
 .footer-inner {
-    width: 1000px;
-    margin: 0 auto;
     padding: 10px 0;
     text-align: center;
 }
-
-/*
-    默认属性
- */
-
-

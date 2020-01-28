@@ -59,16 +59,22 @@ class Route
 
                 /// else里面是带有参数的路由，调用静态方法parsing处理后返回路由与参数
             } else {
-                $result = self::parsing($url, $getArray['have_params']);
-                $route = $result['route'];
-                $params = $result['params'];
+                if (isset($getArray['have_params'])) {
+                    $result = self::parsing($url, $getArray['have_params']);
+                    $route = $result['route'];
+                    $params = $result['params'];
+                } else {
+                    $route = false;
+                }
             }
             // 若是post请求，在route数组内找到对应的键值对
         } elseif ($method === 'post') {
             $postArray = self::$route['post'];
             $route = $postArray[$url];
         }
-
+        if (!$route) {
+            exit('<h1 style="color:red">当前路由并不存在</h1>');
+        }
         // 判断路由调用的是控制器还是回调函数
         if (is_string($route)) {
             $route = explode('@', $route);
