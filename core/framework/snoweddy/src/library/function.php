@@ -21,3 +21,9 @@ if (!function_exists('dd')) {
         exit;
     }
 }
+if (!function_exists('view')) {
+    function view($path, array $data = [])
+    {
+        return (new snoweddy\src\base\View())->view($path, $data);
+    }
+}

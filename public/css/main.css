@@ -6,8 +6,9 @@ body, div, header, footer, ul, ol, h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 ul, ol {list-style: none;}
-a {text-decoration: none; color: inherit}
-input {outline: none;}
+a {text-decoration: none; color: inherit;}
+input, button {outline: none;border: none;}
+button {cursor: pointer;}
 body {
     height: 100%;
     background: #f0f2f5;
@@ -16,7 +17,9 @@ body {
     font-family: 微软雅黑,Helvetica,Arial,PingFang SC,Noto Sans,Roboto,Microsoft Yahei,sans-serif;
     font-weight: inherit;
     box-sizing: border-box;
-
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
 }
 /*
     公共部分定义区域
@@ -24,6 +27,17 @@ body {
 .layout {
     display: flex;
     display: -webkit-flex;
+}
+.form-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.but {
+    padding: 10px 15px;
+    background: #16ab39;
+    border-radius: 5px;
+    width: 100%;
+    color: #fff;
 }
 /*
     公共部分定义结束
@@ -73,6 +87,8 @@ body {
     border: 1px solid rgba(34,36,38,.15);
     border-radius: 15px;
     padding: 3px;
+    display: flex;
+    display: -webkit-flex;
 }
 .search-bar-box>input {
     padding: 5px 10px 5px 10px;
@@ -80,19 +96,20 @@ body {
 }
 .icon {
     position: relative;
-    color: #888;
-    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    padding: 5px;
 }
-.icon::before {
-    position: absolute;
+.icon:before {
     content: " ";
+    position: absolute;
+    top:5px;
+    right: 5px;
     background-image: url("/images/icon/search.gif");
     background-size: 100%;
     width: 16px;
     height: 16px;
     display: block;
-    top: 0;
-    right: 4px;
     cursor: pointer;
 }
 
@@ -115,11 +132,10 @@ body {
  */
 .main {
     width: 1200px;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 15px auto;
     display: flex;
     display: -webkit-flex;
+    flex-direction: column;
 }
 .main-left {
     width: 75%;
@@ -202,6 +218,5 @@ body {
 
 }
 .footer-inner {
-    padding: 10px 0;
     text-align: center;
 }

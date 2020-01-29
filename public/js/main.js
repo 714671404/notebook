@@ -4,8 +4,8 @@
 } ('undefined' != typeof window ? window : this, function (e) {
     "use strict";
     var obj = {
-        get_id: function (id) {
-            return e.getElementById(id);
+        get_dom: function (id) {
+            return e.querySelector(id);
         }
     };
     return e.$ = obj;

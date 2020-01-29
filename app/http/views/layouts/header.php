@@ -13,7 +13,7 @@
 			<form action="search" onsubmit="alert('111'); return false;">
 				<div class="search-bar-box">
 					<input type="text" name="search_bar"/>
-					<i class="icon"></i>
+					<i class="icon" onclick="alert('尚未开发');"></i>
 				</div>
 			</form>
 		</div>

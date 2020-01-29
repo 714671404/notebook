@@ -1,7 +1,25 @@
-#text-editor-main-body {
-    width: 800px;
-    height: 400px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+#text-editor {
+    width: 100%;
+}
+#edit {
+    margin: 0 auto;
+    min-height: 600px;
     background: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
+    padding: 10px;
+}
+.toolbar-but {
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 11px 3px rgba(42, 42, 42, .1);
+}
+.toolbar-but>button {
+    background: #fff;
+    padding: 10px 18px;
+    color: #777;
+}
+.toolbar-but>button:hover {
+    background: #eee;
 }

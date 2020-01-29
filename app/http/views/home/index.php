@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>菜鸟日记</title>
+    <title><?= $data['title']?></title>
 	<link href="/images/favicon.ico" rel="icon" type="image/ico">
     <link href="/css/main.css" rel="stylesheet" type="text/css">
 </head>
@@ -141,5 +141,8 @@
         <?php include __DIR__ . '/../layouts/footer.php'?>
     </div>
     <script src="/js/main.js" type="text/javascript"></script>
+    <script>
+
+    </script>
 </body>
 </html>
