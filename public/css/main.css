@@ -29,7 +29,6 @@ body {
     display: -webkit-flex;
 }
 .form-group {
-    margin: 1px 0;
 }
 .but {
     padding: 10px 15px;
@@ -133,7 +132,6 @@ body {
     margin: 15px auto;
     display: flex;
     display: -webkit-flex;
-    flex-direction: column;
 }
 .main-left {
     width: 75%;
