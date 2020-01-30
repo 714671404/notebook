@@ -13,5 +13,7 @@
     <div style="">
         <div style="height: 100px; background: #6E9CC3"></div>
     </div>
+
+    <script src="/js/text-editor.js" type="text/javascript"></script>
 </body>
 </html>

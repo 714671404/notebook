@@ -7,7 +7,7 @@ body, div, header, footer, ul, ol, h1, h2, h3, h4, h5, h6 {
 }
 ul, ol {list-style: none;}
 a {text-decoration: none; color: inherit;}
-input, button {outline: none;border: none;}
+input, button, div {outline: none;border: none;}
 button {cursor: pointer;}
 body {
     height: 100%;
@@ -29,13 +29,11 @@ body {
     display: -webkit-flex;
 }
 .form-group {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 1px 0;
 }
 .but {
     padding: 10px 15px;
     background: #16ab39;
-    border-radius: 5px;
     width: 100%;
     color: #fff;
 }

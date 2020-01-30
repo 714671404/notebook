@@ -6,6 +6,9 @@
     var obj = {
         get_dom: function (id) {
             return e.querySelector(id);
+        },
+        createEl: function (el) {
+            return document.createElement(el);
         }
     };
     return e.$ = obj;

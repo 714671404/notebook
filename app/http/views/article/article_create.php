@@ -19,6 +19,7 @@
                     <button type="button">标题2</button>
                     <button type="button">标题3</button>
                     <button type="button">标题4</button>
+                    <button type="button">链接</button>
                     <button type="button">图片上传</button>
                     <button type="button">左</button>
                     <button type="button">中</button>
@@ -28,7 +29,7 @@
                 </div>
             </div>
             <div id="edit"
-                 class="form-grout"
+                 class="form-group"
                  contenteditable="true"
             ></div>
             <div class="form-group">
@@ -37,5 +38,7 @@
         </div>
     </section>
     <?php include __DIR__ . '/../layouts/footer.php'?>
+    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="/js/text-editor/text-editor.js" type="text/javascript"></script>
 </body>
 </html>
