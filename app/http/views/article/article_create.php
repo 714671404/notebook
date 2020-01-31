@@ -13,7 +13,7 @@
         <div id="text-editor">
             <div id="toolbar" class="form-group">
                 <div class="toolbar-but">
-                    <button type="button">加粗</button>
+                    <button type="button" title="bold">加粗</button>
                     <button type="button">斜体</button>
                     <button type="button">标题1</button>
                     <button type="button">标题2</button>
@@ -33,12 +33,15 @@
                  contenteditable="true"
             ></div>
             <div class="form-group">
-                <button type="button" class="but">提交</button>
+                <button type="button" class="but" id="edit-but">提交</button>
             </div>
         </div>
     </section>
     <?php include __DIR__ . '/../layouts/footer.php'?>
     <script src="/js/main.js" type="text/javascript"></script>
     <script src="/js/text-editor/text-editor.js" type="text/javascript"></script>
+    <script>
+        editor.init();
+    </script>
 </body>
 </html>
