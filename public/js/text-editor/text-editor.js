@@ -1,17 +1,33 @@
-const editor = {
-    init: function() {
-        const $this = this;
-        const actions = document.querySelector('#toolbar').querySelectorAll('button');
-        actions.forEach(function (action) {
-           action.onclick = function () {
-               $this.exec(this.title)
-           }
-        });
-        document.querySelector('#edit-but').onclick = function () {
-            console.log(document.querySelector('#edit').innerHTML)
+!function () {
+    var
+        editor = {},
+        actions = document.querySelector('#toolbar').querySelectorAll('button'),
+        edit_content = document.querySelector('#edit-content'),
+        edit_but = document.querySelector('#edit-but');
+
+    function init()
+    {
+        for (var i in actions) {
+            actions[i].onclick = function() {
+                switch (this.title) {
+                    case 'formatBlock':
+                        exec(this.title, 'h' + this.name);
+                        break
+                    case 'createLink':
+                        exec(this.title, '/');
+                        break
+                    default:
+                        exec(this.title)
+                }
+            }
         }
-    },
-    exec: function(command, value = null) {
-        document.execCommand(command, false, value);
     }
-};
+
+    function exec(command, value)
+    {
+        return document.execCommand(command, false, value);
+    }
+
+    editor.init = init;
+    window.editor = editor
+} ();

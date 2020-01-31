@@ -14,21 +14,20 @@
             <div id="toolbar" class="form-group">
                 <div class="toolbar-but">
                     <button type="button" title="bold">加粗</button>
-                    <button type="button">斜体</button>
-                    <button type="button">标题1</button>
-                    <button type="button">标题2</button>
-                    <button type="button">标题3</button>
-                    <button type="button">标题4</button>
-                    <button type="button">链接</button>
-                    <button type="button">图片上传</button>
-                    <button type="button">左</button>
-                    <button type="button">中</button>
-                    <button type="button">右</button>
-                    <button type="button">撤销</button>
-                    <button type="button">全选</button>
+                    <button type="button" title="italic">斜体</button>
+                    <button type="button" title="formatBlock" name="1">标题1</button>
+                    <button type="button" title="formatBlock" name="2">标题2</button>
+                    <button type="button" title="formatBlock" name="3">标题3</button>
+                    <button type="button" title="createLink">链接</button>
+                    <button type="button" title="=">图片上传</button>
+                    <button type="button" title="justifyLeft">左</button>
+                    <button type="button" title="justifyCenter">中</button>
+                    <button type="button" title="justifyRight">右</button>
+                    <button type="button" title="=">撤销</button>
+                    <button type="button" title="=">全选</button>
                 </div>
             </div>
-            <div id="edit"
+            <div id="edit-content"
                  class="form-group"
                  contenteditable="true"
             ></div>
