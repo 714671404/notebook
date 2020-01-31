@@ -23,8 +23,8 @@
                     <button type="button" title="justifyLeft">左</button>
                     <button type="button" title="justifyCenter">中</button>
                     <button type="button" title="justifyRight">右</button>
-                    <button type="button" title="=">撤销</button>
-                    <button type="button" title="=">全选</button>
+                    <button type="button" title="undo">撤销</button>
+                    <button type="button" title="selectAll">全选</button>
                 </div>
             </div>
             <div id="edit-content"

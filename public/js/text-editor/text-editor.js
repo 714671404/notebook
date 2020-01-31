@@ -11,7 +11,7 @@
             actions[i].onclick = function() {
                 switch (this.title) {
                     case 'formatBlock':
-                        exec(this.title, 'h' + this.name);
+                        exec(this.title, '<h' + this.name + '>');
                         break
                     case 'createLink':
                         exec(this.title, '/');
