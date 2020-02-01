@@ -12,6 +12,7 @@
                     {title: '内容', dataCommand: '命令', dataValue: '指令参数'}
                 ]
          */
+        exec('defaultParagraphSeparator', 'p');
         editor.root = document.querySelector(params.id);
         editor.root.style.width = !params.width ? '100%' : params.width;
         var template = "" +
@@ -26,7 +27,8 @@
             "   </div>\n\t" +
             "</div>\n\t";
         var data = params.data,
-            toolbar;
+            toolbar,
+            edit_content;
         editor.root.innerHTML = template;
         toolbar = editor.root.querySelector('#toolbar');
         for (var v in data) {
@@ -50,27 +52,11 @@
                     case 'formatBlock':
                         exec(dataCommand, '<h' + dataValue + '>');
                         break
-                    case 'createLink':
-                        exec(dataCommand, '/');
-                        break
                     default:
                         exec(dataCommand)
                 }
             }
         }
-
-        editor.root.querySelector('#text-editor #edit-content').addEventListener('keydown', function (event) {
-            if (event.which == 13) {
-                if (window.getSelection) {
-                    var selection = window.getSelection(),
-                        range = selection.getRangeAt(0),
-                        p = createEl('p');
-                    range.insertNode(p);
-                    console.log(range);
-                    return false;
-                }
-            }
-        })
     }
 
     // 获取连接

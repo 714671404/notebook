@@ -10,10 +10,13 @@
 <body>
     <?php include __DIR__ . '/../layouts/header.php'?>
     <section class="main">
-        https://www.jianshu.com/p/924f8823ad34
-        https://caelumtian.github.io/2017/08/21/%E5%88%A9%E7%94%A8javascript%E6%90%AD%E5%BB%BA%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/
         <div id="editor"></div>
     </section>
+
+    <div>
+        https://www.jianshu.com/p/924f8823ad34
+        https://caelumtian.github.io/2017/08/21/%E5%88%A9%E7%94%A8javascript%E6%90%AD%E5%BB%BA%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/
+    </div>
     <?php include __DIR__ . '/../layouts/footer.php'?>
     <script src="/js/main.js" type="text/javascript"></script>
     <script src="/js/text-editor/text-editor.js" type="text/javascript"></script>
@@ -27,8 +30,6 @@
                 {title: '标题2', dataCommand: 'formatBlock', dataValue: '2'},
                 {title: '标题3', dataCommand: 'formatBlock', dataValue: '3'},
                 {title: '标题4', dataCommand: 'formatBlock', dataValue: '4'},
-                {title: '链接', dataCommand: 'createLink'},
-                {title: '图片', dataCommand: ''},
                 {title: '左', dataCommand: 'justifyLeft'},
                 {title: '中', dataCommand: 'justifyCenter'},
                 {title: '右', dataCommand: 'justifyRight'},
