@@ -57,6 +57,16 @@
                 }
             }
         }
+        edit_content = editor.root.querySelector('#edit-content');
+        edit_content.innerHTML = '<p><br></p>';
+        edit_content.addEventListener('keydown', function(e) {
+            if (e.which == 8) {
+                if (!this.innerHTML) {
+                    console.log(1);
+                    this.innerHTML = '<p><br></p>';
+                }
+            }
+        });
     }
 
     // 获取连接
