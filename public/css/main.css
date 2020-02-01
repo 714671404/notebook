@@ -29,6 +29,7 @@ body {
     display: -webkit-flex;
 }
 .form-group {
+
 }
 .but {
     padding: 10px 15px;
@@ -132,6 +133,12 @@ body {
     margin: 15px auto;
     display: flex;
     display: -webkit-flex;
+    justify-content: center;
+}
+.content {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
 }
 .main-left {
     width: 75%;
@@ -205,6 +212,7 @@ body {
 .introduction-text {
     border-top: 1px solid rgba(34,36,38,.1);
     padding:15px;
+    letter-spacing: 1.5px;
 }
 /*
     底部区域

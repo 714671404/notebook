@@ -5,3 +5,17 @@
 			https://copyfuture.com/blogs-details/20191213200034043y0xehzw1ykxkpjx <br>
 			https://blog.csdn.net/Zhihua_W/article/details/53167562 <br>
 		</div>
+
+
+
+
+		<div id="text-editor">
+            <div id="toolbar" class="form-group">
+                <div class="toolbar-but"></div>
+            </div>
+            <div id="edit-content"
+                 class="form-group"
+                 contenteditable="true"
+            ></div>
+            <div class="form-group"><button type="button" class="but" id="edit-but">提交</button></div>
+        </div>
