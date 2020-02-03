@@ -13,9 +13,11 @@ Route::get('/dome', function () {
 });
 
 Route::get('/test', function () {
+    unset($_GET['s']);
+//    http_response_code(403);
     return json_encode([
-        'data' => [$_GET['user'], $_GET['pass']],
-        'statucCode' => 200
+        'data' => $_GET,
+        'statusCode' => 200
     ]);
 });
 Route::post('/test', function () {
@@ -24,3 +26,8 @@ Route::post('/test', function () {
         'statucCode' => 200
     ]);
 });
+
+/*
+ * 苟江response模块
+ * 使用http_response_code，json_encode函数创建一个返回json并且待状态码的类
+ */

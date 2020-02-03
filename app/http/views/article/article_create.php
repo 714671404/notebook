@@ -36,28 +36,20 @@
                 {title: '撤销', dataCommand: 'undo'},
             ]
         });
-
-        // $.ajax({
-        //     url: '/test',
-        //     type: 'post',
-        //     data: {
-        //         user: 'snoweddy',
-        //         pass: 'yuefei123'
-        //     },
-        //     success: function (response, xxx) {
-        //         console.log(response);
-        //     },
-        //     fail: function (error) {
-        //         console.log(error)
-        //     }
-        // })
-
-        function dom()
-        {
-            return Math.random();
-        }
-        dom().then(function (response) {
-            console.log(response)
+        $.ajax({
+            url: '/test',
+            data: {
+                user: 'snoweddy',
+                pass: 'yuefei12',
+                email: '714671404@qq.com',
+                text: '这是一个测试的中文字符串123123，测试是否有乱码发生'
+            },
+            success: function (response) {
+                console.log(JSON.parse(response))
+            },
+            fail: function (error) {
+                console.log(error)
+            }
         })
 
     </script>

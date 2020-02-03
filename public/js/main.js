@@ -52,9 +52,9 @@
                 if (xhr.readyState === 4) {
                     var status = xhr.status;
                     if (status >= 200 && status < 300) {
-                        options.success && options.success(xhr.responseText, xhr.responseXML)
+                        options.success(xhr.responseText || xhr.responseXML)
                     } else {
-                        options.fail && options.fail(status)
+                        options.fail(status)
                     }
                 }
             };
