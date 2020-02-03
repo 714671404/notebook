@@ -36,6 +36,30 @@
                 {title: '撤销', dataCommand: 'undo'},
             ]
         });
+
+        // $.ajax({
+        //     url: '/test',
+        //     type: 'post',
+        //     data: {
+        //         user: 'snoweddy',
+        //         pass: 'yuefei123'
+        //     },
+        //     success: function (response, xxx) {
+        //         console.log(response);
+        //     },
+        //     fail: function (error) {
+        //         console.log(error)
+        //     }
+        // })
+
+        function dom()
+        {
+            return Math.random();
+        }
+        dom().then(function (response) {
+            console.log(response)
+        })
+
     </script>
 </body>
 </html>
