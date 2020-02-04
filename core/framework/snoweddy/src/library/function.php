@@ -27,3 +27,9 @@ if (!function_exists('view')) {
         return (new snoweddy\src\base\View())->view($path, $data);
     }
 }
+if (!function_exists('response')) {
+    function response(array $data, $statusCode = 200)
+    {
+        return (new snoweddy\src\library\Response())->json($data, $statusCode);
+    }
+}

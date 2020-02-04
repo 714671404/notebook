@@ -21,10 +21,8 @@
             "       <div class=\"toolbar-but\">" +
             "       </div>\n\t" +
             "   </div>\n\t" +
-            "   <div id=\"edit-content\" class=\"form-group\" contenteditable=\"true\"></div>\n\t" +
-            "   <div class=\"form-group\">\n\t" +
-            "       <button type=\"button\" class=\"but\" id=\"edit-but\">提交</button>\n\t" +
-            "   </div>\n\t" +
+            "   <div id=\"edit-content\" name='test' class=\"form-group\" contenteditable=\"true\"></div>\n\t" +
+            "   <input type='hidden' name='text' value=''>" +
             "</div>\n\t";
         var data = params.data,
             toolbar,
@@ -62,10 +60,12 @@
         edit_content.addEventListener('keydown', function(e) {
             if (e.which == 8) {
                 if (!this.innerHTML) {
-                    console.log(1);
                     this.innerHTML = '<p><br></p>';
                 }
             }
+        });
+        edit_content.addEventListener('input', function () {
+            editor.root.querySelector('#text-editor input').value = this.innerHTML
         });
     }
 

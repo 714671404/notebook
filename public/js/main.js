@@ -3,11 +3,11 @@
     window.$ = t(e.document);
 } ('undefined' != typeof window ? window : this, function (e) {
     "use strict";
-    var obj;
+    var obj, dom;
 
     obj = {
         get_dom: function (id) {
-            return e.querySelector(id);
+            return this.dom = e.querySelector(id);
         },
         createEl: function (el) {
             return document.createElement(el);
@@ -68,7 +68,6 @@
                 xhr.send(params);
             }
 
-
             function getParams(data) {
                 var arr = [];
                 for (var param in data){
@@ -76,7 +75,7 @@
                 }
                 return arr.join('&');
             }
-        }
+        },
     };
     return e.$ = obj;
 });

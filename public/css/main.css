@@ -8,8 +8,14 @@ body, div, header, footer, ul, ol, h1, h2, h3, h4, h5, h6 {
 ul, ol {list-style: none;}
 a {text-decoration: none; color: inherit;}
 input, button, div {outline: none;border: none;}
+input{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 button {cursor: pointer;}
 body {
+    min-width: 1300px;
     height: 100%;
     background: #f0f2f5;
     color: #333;
@@ -53,7 +59,6 @@ body {
 #header>.nav {
     width: 1200px;
     height: 50px;
-    padding: 0 20px;
     align-items: center;
     margin: 0 auto;
 }
@@ -213,6 +218,13 @@ body {
     border-top: 1px solid rgba(34,36,38,.1);
     padding:15px;
     letter-spacing: 1.5px;
+}
+#articles {
+    width: 100%;
+}
+#articles>form>.form-group>input {
+    padding: 10px 15px;
+    width: 100%;
 }
 /*
     底部区域

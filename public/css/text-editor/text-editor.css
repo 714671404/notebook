@@ -5,12 +5,16 @@
 #edit-content {
     min-height: 600px;
     background: #fff;
-    border: 1px solid #eee;
-    padding: 10px;
+    padding: 10px 15px;
+}
+#edit-content p {
+    margin: 0;
+    padding: 0;
 }
 .toolbar-but {
     background: #fff;
-    border: 1px solid #eee;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 .toolbar-but>button {
     background: #fff;
