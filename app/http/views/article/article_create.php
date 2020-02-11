@@ -41,15 +41,10 @@
                 {title: '撤销', dataCommand: 'undo'},
             ]
         });
+        function a() {
 
-        var article, article_submit;
-        article = $.get_dom('#articles form');
-        $.get_dom('#edit-but')._click(function () {
-            console.log(123123);
-        });
-        // article_submit.addEventListener('click', function (t) {
-        //     article.submit();
-        // });
+        }
+        console.log(new a);
     </script>
 </body>
 </html>
